@@ -58,19 +58,31 @@ void PhoneBook::searchContacts() const {
         return;
     }
     displayAllContacts();
+    int contactIndex = 0;
+    if (contactCount >= 8)
+        contactIndex = 8;
+    else
+        contactIndex = contactCount;
+    std::string input;
     int index;
-    std::cout << "Enter index of contact to view details (0-7): ";
-    std::cin >> index;
-    if (index < 0 || index >= 8) {
+
+    std::cout << "Enter index of contact to view details (0-" << contactIndex - 1 << "): ";
+    std::getline(std::cin, input);
+
+    // Check if input is a single digit
+    if (input.length() != 1 || !std::isdigit(input[0])) {
+        std::cout << "Invalid input. Please enter a digit between 0 and " << contactIndex - 1 << "." << std::endl;
+        return;
+    }
+
+    index = input[0] - '0';
+
+    if (index < 0 || index >= contactIndex) {
         std::cout << "Invalid index. Please try again." << std::endl;
         return;
     }
-    std::cin.ignore(); // Clear the newline character from the input buffer
-    if (isValidIndex(index)) {
+    else
         displayContact(index);
-    } else {
-        std::cout << "Invalid index." << std::endl;
-    }
 }
 
 void PhoneBook::displayContact(int index) const {
@@ -84,7 +96,12 @@ void PhoneBook::displayContact(int index) const {
 void PhoneBook::displayAllContacts() const {
     std::cout << "| Index | First Name | Last Name  | Nickname   |\n";
     std::cout << "|-------|------------|------------|------------|\n";
-    for (int i = 0; i < 8; ++i) {
+    int contactIndex = 0;
+    if (contactCount >= 8)
+        contactIndex = 8;
+    else
+        contactIndex = contactCount;
+    for (int i = 0; i < contactIndex; ++i) {
         contacts[i].displaySummary(i);
     }
 }
