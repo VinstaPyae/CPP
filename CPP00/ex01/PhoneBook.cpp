@@ -1,8 +1,8 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : contactCount(0) {}
+PhoneBook::PhoneBook(void) : contactCount(0) {}
 
-void PhoneBook::addContact() {
+void PhoneBook::addContact(void) {
     int contactindex;
     Contact newContact;
     std::string firstName, lastName, nickname, phoneNumber, secret;
@@ -41,10 +41,7 @@ void PhoneBook::addContact() {
     newContact.setContact(firstName, lastName, nickname, phoneNumber, secret);
     if (contactCount >= 8)
     {
-        std::cout << "before contactCount: " << contactCount << std::endl;
         contactindex = contactCount % 8;
-        std::cout << "after contactCount: " << contactCount << std::endl;
-        std::cout << "contactindex: " << contactindex << std::endl;
         contacts[contactindex] = newContact; // Overwrite the oldest contact if limit reached
         contactCount++;
     }
@@ -52,7 +49,7 @@ void PhoneBook::addContact() {
         contacts[contactCount++] = newContact;
 }
 
-void PhoneBook::searchContacts() const {
+void PhoneBook::searchContacts(void) const{
     if (contactCount == 0) {
         std::cout << "No contacts available." << std::endl;
         return;
@@ -66,17 +63,15 @@ void PhoneBook::searchContacts() const {
     std::string input;
     int index;
 
-    std::cout << "Enter index of contact to view details (0-" << contactIndex - 1 << "): ";
+    std::cout << "Enter index of contact to view details (1-" << contactIndex << "): ";
     std::getline(std::cin, input);
-
-    // Check if input is a single digit
     if (input.length() != 1 || !std::isdigit(input[0])) {
-        std::cout << "Invalid input. Please enter a digit between 0 and " << contactIndex - 1 << "." << std::endl;
+        std::cout << "Invalid input. Please enter a digit between 1 and " << contactIndex << "." << std::endl;
         return;
     }
 
     index = input[0] - '0';
-
+    index--;
     if (index < 0 || index >= contactIndex) {
         std::cout << "Invalid index. Please try again." << std::endl;
         return;
@@ -93,9 +88,13 @@ void PhoneBook::displayContact(int index) const {
     }
 }
 
-void PhoneBook::displayAllContacts() const {
-    std::cout << "| Index | First Name | Last Name  | Nickname   |\n";
-    std::cout << "|-------|------------|------------|------------|\n";
+void PhoneBook::displayAllContacts(void) const {
+     std::cout << "|"
+              << std::setw(10) << "Index" << "|"
+              << std::setw(10) << "First Name" << "|"
+              << std::setw(10) << "Last Name" << "|"
+              << std::setw(10) << "Nick Name" << "|\n";
+    std::cout << std::string(45, '-') << std::endl;
     int contactIndex = 0;
     if (contactCount >= 8)
         contactIndex = 8;
@@ -110,7 +109,7 @@ bool PhoneBook::isValidIndex(int index) const {
     return index >= 0 && index < 8;
 }
 
-void PhoneBook::clearContacts() {
+void PhoneBook::clearContacts(void) {
     contactCount = 0;
     std::cout << "All contacts cleared." << std::endl;
 }

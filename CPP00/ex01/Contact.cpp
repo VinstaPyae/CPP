@@ -16,13 +16,13 @@ std::string Contact::formatField(std::string field) const {
 
 void Contact::displaySummary(int index) const {
     std::cout << "|"
-              << std::setw(10) << index << "|"
+              << std::setw(10) << index + 1 << "|"
               << std::setw(10) << formatField(firstName) << "|"
               << std::setw(10) << formatField(lastName) << "|"
               << std::setw(10) << formatField(nickname) << "|\n";
 }
 
-void Contact::displayFull() const {
+void Contact::displayFull(void) const {
     std::cout << "First Name: " << firstName << std::endl;
     std::cout << "Last Name: " << lastName << std::endl;
     std::cout << "Nickname: " << nickname << std::endl;

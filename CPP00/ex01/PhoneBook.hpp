@@ -9,13 +9,13 @@ class PhoneBook
         Contact contacts[8];
         int     contactCount;
     public:
-        PhoneBook();
-        void    addContact();
-        void    searchContacts() const;
+        PhoneBook(void);
+        void    addContact(void);
+        void    searchContacts(void) const;
         void    displayContact(int index) const;
-        void    displayAllContacts() const;
+        void    displayAllContacts(void) const;
         bool    isValidIndex(int index) const;
-        void    clearContacts();
+        void    clearContacts(void);
 };
 
 #endif

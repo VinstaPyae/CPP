@@ -16,7 +16,7 @@ private:
 public:
     void setContact(std::string fn, std::string ln, std::string nn, std::string pn, std::string sc);
     void displaySummary(int index) const;
-    void displayFull() const;
+    void displayFull(void) const;
     std::string formatField(std::string field) const;
 };
 
