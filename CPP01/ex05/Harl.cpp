@@ -21,7 +21,7 @@ void Harl::error() {
 }
 
 void Harl::complain(std::string level) {
-    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    std::string thislevels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     void (Harl::*funcPtrs[]) () = {
         &Harl::debug,
         &Harl::info,
@@ -29,7 +29,7 @@ void Harl::complain(std::string level) {
         &Harl::error
     };
     for (int i = 0; i < 4; ++i) {
-        if (level == levels[i]) {
+        if (level == thislevels[i]) {
             (this->*funcPtrs[i])();
             return;
         }
