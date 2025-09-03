@@ -35,7 +35,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 void ClapTrap::attack(const std::string& target) {
     if(_HitPoints > 0 && _EnergyPoints > 0) {
         --_EnergyPoints;
-        std::cout << "ClapTrap " << _Name << " attacks " << target << ", causing " << _AttackDamage << " points of damage!" << std::endl;
+        std::cout << "ClapTrap " << _Name << " attacks " << target << ", causing " << _AttackDamage << " points of damage! | Current energy points: " << _EnergyPoints << std::endl;
     }
     else {
         std::cout << "ClapTrap " << _Name << " cannot attack, either out of hit points or energy!" << std::endl;
@@ -56,7 +56,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
     if (_HitPoints > 0 && _EnergyPoints > 0) {
         --_EnergyPoints;
         _HitPoints += amount;
-        std::cout << "ClapTrap " << _Name << " repairs itself for " << amount << " hit points! Current hit points: " << _HitPoints << std::endl;
+        std::cout << "ClapTrap " << _Name << " repairs itself for " << amount << " hit points! Current hit points: " << _HitPoints << " | Current energy points: " << _EnergyPoints << std::endl;
     } else {
         std::cout << "ClapTrap " << _Name << " cannot be repaired, either out of hit points or energy!" << std::endl;
     }

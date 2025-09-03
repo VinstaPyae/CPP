@@ -3,15 +3,19 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
-public:
-    FragTrap();
-    FragTrap(const std::string& name);
-    FragTrap(const FragTrap& other);
-    FragTrap& operator=(const FragTrap& other);
-    ~FragTrap();
-
-    void highFivesGuys(void);
+class FragTrap : public ClapTrap
+{
+    public:
+        //construct and destruct
+        FragTrap();
+        FragTrap(std::string name);
+        ~FragTrap();
+        //copy construct
+        FragTrap(const FragTrap& other);
+        //assign operator
+        FragTrap& operator=(const FragTrap& other);
+        //members
+        void highFivesGuys(void);
 };
 
 #endif
