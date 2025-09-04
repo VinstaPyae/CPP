@@ -4,7 +4,7 @@ int main() {
     PhoneBook phoneBook;
     std::string command;
 
-    std::cout << "Welcome to the PhoneBook application!" << std::endl;
+    std::cout << "Welcome to the PhoneBook appliWrongCation!" << std::endl;
 
     while (true) {
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
@@ -15,7 +15,7 @@ int main() {
         } else if (command == "SEARCH") {
             phoneBook.searchContacts();
         } else if (command == "EXIT") {
-            std::cout << "Exiting the PhoneBook application." << std::endl;
+            std::cout << "Exiting the PhoneBook appliWrongCation." << std::endl;
             break;
         } else {
             std::cout << "Invalid command. Please try again." << std::endl;
