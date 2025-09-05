@@ -17,10 +17,10 @@ class Animal
     //assign operator
         Animal& operator=(const Animal& other);
     //getter setter
-        std::string getType() const;
-        void setType(std::string type) const;
+        virtual std::string getType() const;
+        virtual void setType(std::string type);
     //members
-        virtual void makeSound();
+        virtual void makeSound() const;
 };
 
 #endif

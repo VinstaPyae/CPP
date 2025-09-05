@@ -1,3 +1,5 @@
+#include "Animal.hpp"
+#include "Cat.hpp"
 #include "WrongDog.hpp"
 #include "WrongCat.hpp"
 
@@ -15,5 +17,13 @@ int main()
     delete i;
     delete j;
     delete meta;
+    const Animal* a = new Animal();
+    const Animal* b = new Cat();
+    std::cout << a->getType() << " " << std::endl;
+    std::cout << b->getType() << " " << std::endl;
+    b->makeSound(); //will output the WrongCat sound!
+    a->makeSound();
+    delete a;
+    delete b;
     return 0;
 }
