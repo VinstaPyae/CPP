@@ -6,11 +6,10 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:37 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 17:26:38 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/08 17:38:38 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongDog.hpp"
@@ -27,6 +26,7 @@ int main()
     i->makeSound();
     j->makeSound();
     meta->makeSound();
+    static_cast<const WrongCat*>(i)->makeSound();
     delete i;
     delete j;
     delete meta;

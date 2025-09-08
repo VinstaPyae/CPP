@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:21 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 17:26:22 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/08 18:39:38 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ Cat::Cat() : Animal()
 
 Cat::Cat(const Cat& other) : Animal(other)
 {
-    type = other.type;
     std::cout << type << " copy from " << other.type << std::endl;
 }
 
@@ -31,10 +30,10 @@ Cat::~Cat()
 
 Cat& Cat::operator=(const Cat& other)
 {
+    std::cout << type << " assign from " << other.type << std::endl;
     if (this != &other)
     {
-        Cat::operator=(other);
-         std::cout << type << " assign from " << other.type << std::endl;
+        Animal::operator=(other);
     }
     return *this;
 }

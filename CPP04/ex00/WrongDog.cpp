@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:59 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 17:27:00 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/08 18:37:10 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ WrongDog::~WrongDog()
 
 WrongDog::WrongDog(const WrongDog& other) : WrongAnimal(other)
 {
-    type = other.type;
+    std::cout << "WrongDog Copied!\n";
 }
 
 WrongDog& WrongDog::operator=(const WrongDog& other)
 {
+    std::cout << "WrongDog assign " << type << std::endl;
     if (this != &other)
     {
         WrongAnimal::operator=(other);
-        std::cout << "WrongDog assign " << type << std::endl;
     }
     return *this;
 }

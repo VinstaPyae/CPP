@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:44 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 17:26:45 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/08 18:19:55 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ WrongAnimal::WrongAnimal(const WrongAnimal& other)
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 {
+    std::cout << "God assign it \n";
     if (this != &other)
     {
         this->type = other.type;
-        std::cout << "God assign it \n";
     }
     return *this;
 }

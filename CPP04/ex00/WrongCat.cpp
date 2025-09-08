@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:52 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 17:26:53 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/08 18:36:58 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ WrongCat::~WrongCat()
 
 WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other)
 {
-    type = other.type;
+    std::cout << "WrongCat Copied!\n";
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& other)
 {
+    std::cout << "WrongCat assign " << type << std::endl;
     if (this != &other)
     {
         WrongAnimal::operator=(other);
-        std::cout << "WrongCat assign " << type << std::endl;
     }
     return *this;
 }
