@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/08 17:26:40 by pzaw              #+#    #+#              #
+#    Updated: 2025/09/08 17:26:41 by pzaw             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME    := WrongAnimal
 CXX     := c++
 CXXFLAGS:= -Wall -Wextra -Werror -std=c++98
-SRCS    := main.cpp WrongAnimal.cpp WrongDog.cpp WrongCat.cpp Animal.cpp Cat.cpp
+SRCS    := main.cpp WrongAnimal.cpp WrongDog.cpp WrongCat.cpp Animal.cpp Cat.cpp Dog.cpp
 OBJS    := $(SRCS:.cpp=.o)
 
 all: $(NAME)

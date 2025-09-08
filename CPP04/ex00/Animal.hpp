@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/08 17:26:17 by pzaw              #+#    #+#             */
+/*   Updated: 2025/09/08 17:26:18 by pzaw             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
@@ -17,8 +29,8 @@ class Animal
     //assign operator
         Animal& operator=(const Animal& other);
     //getter setter
-        virtual std::string getType() const;
-        virtual void setType(std::string type);
+        std::string getType() const;
+        void setType(std::string type);
     //members
         virtual void makeSound() const;
 };
