@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:21 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 18:39:38 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/09 18:31:02 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,3 @@ void Cat::makeSound() const
     std::cout << "Meow Meow!\n";
 }
 
-std::string Cat::getType() const
-{
-    return type;
-}
-
-void Cat::setType(std::string type)
-{
-    Animal::setType(type);
-}

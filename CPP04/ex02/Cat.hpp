@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:24 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/09 18:31:09 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/09 19:03:00 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #define CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
+    private:
+        Brain* brain;
     public:
     //con & de    
         Cat();
@@ -27,6 +30,9 @@ class Cat : public Animal
         Cat& operator=(const Cat& other);
     //override member
         virtual void makeSound() const;
+    //members
+        void setBrainIdea(int index, const std::string &idea);
+        void displayBrainIdea(int index) const;
 };
 
 #endif

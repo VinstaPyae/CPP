@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 17:26:21 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/09 19:02:18 by pzaw             ###   ########.fr       */
+/*   Created: 2025/09/08 17:26:29 by pzaw              #+#    #+#             */
+/*   Updated: 2025/09/09 19:18:46 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
-Cat::Cat() : Animal(), brain(new Brain())
+Dog::Dog() : Animal(), brain(new Brain())
 {
-    type = "Cat";
+    type = "Dog";
     std::cout << type << " Born\n";
 }
 
-Cat::Cat(const Cat& other) : Animal(other)
+Dog::Dog(const Dog& other) : Animal(other)
 {
     std::cout << type << " copy from " << other.type << std::endl;
     brain = new Brain(*other.brain);
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
     delete brain;
     std::cout << type << " Died!\n";
 }
 
-Cat& Cat::operator=(const Cat& other)
+Dog& Dog::operator=(const Dog& other)
 {
     std::cout << type << " assign from " << other.type << std::endl;
     if (this != &other)
@@ -42,17 +42,17 @@ Cat& Cat::operator=(const Cat& other)
     return *this;
 }
 
-void Cat::makeSound() const
+void Dog::makeSound() const
 {
-    std::cout << "Meow Meow!\n";
+    std::cout << "Woof Woof!\n";
 }
 
-void Cat::setBrainIdea(int index, const std::string& idea)
+void Dog::setBrainIdea(int index, const std::string& idea)
 {
     brain->setIdea(index, idea);
 }
 
-void Cat::displayBrainIdea(int index) const
+void Dog::displayBrainIdea(int index) const
 {
-    std::cout << "Cat's idea " << brain->getIdea(index) << std::endl;    
+    std::cout << "Dog's idea " << brain->getIdea(index) << std::endl;
 }

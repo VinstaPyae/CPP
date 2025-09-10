@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 17:26:24 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/09 18:31:09 by pzaw             ###   ########.fr       */
+/*   Created: 2025/09/08 18:23:36 by pzaw              #+#    #+#             */
+/*   Updated: 2025/09/08 18:28:58 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-#include "Animal.hpp"
+#include <iostream>
+#include <string>
 
-class Cat : public Animal
+class Brain
 {
+    private:
+        std::string ideas[100];
     public:
-    //con & de    
-        Cat();
-        ~Cat();
-    //copy con
-        Cat(const Cat& other);
+    // de & construct
+        Brain();
+        ~Brain();
+    //copy construct
+        Brain(const Brain& other);
     //assign operator
-        Cat& operator=(const Cat& other);
-    //override member
-        virtual void makeSound() const;
-};
+        Brain& operator=(const Brain& other);
+    //get set
+        std::string getIdea(int index) const;
+        void setIdea(int index, const std::string& idea);
+    };
 
 #endif

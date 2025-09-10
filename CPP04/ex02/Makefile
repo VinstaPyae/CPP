@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 15:45:42 by pzaw              #+#    #+#              #
-#    Updated: 2025/09/05 15:45:43 by pzaw             ###   ########.fr        #
+#    Created: 2025/09/08 17:26:40 by pzaw              #+#    #+#              #
+#    Updated: 2025/09/09 19:22:51 by pzaw             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    := Scavda
+NAME    := Abstract_Animal
 CXX     := c++
 CXXFLAGS:= -Wall -Wextra -Werror -std=c++98
-SRCS    := main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS    := main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJS    := $(SRCS:.cpp=.o)
 
 all: $(NAME)

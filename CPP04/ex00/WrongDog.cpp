@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:59 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 18:37:10 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/09 18:55:01 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 WrongDog::WrongDog() : WrongAnimal()
 {
+    type = "WrongDog";
     std::cout << "WrongDog Born!\n";
 }
 
@@ -35,16 +36,6 @@ WrongDog& WrongDog::operator=(const WrongDog& other)
         WrongAnimal::operator=(other);
     }
     return *this;
-}
-
-std::string WrongDog::getType() const
-{
-    return type;
-}
-
-void WrongDog::setType(std::string type)
-{
-    this->type = type;
 }
 
 void WrongDog::makeSound() const

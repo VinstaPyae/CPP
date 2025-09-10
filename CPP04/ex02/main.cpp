@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:37 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/09 18:26:06 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/09 19:25:04 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Cat.hpp"
 
 int main() {
+    // Animal test;
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 
@@ -33,7 +34,7 @@ int main() {
     dog1.displayBrainIdea(0);
     {
         Dog dog2;
-        dog2 = dog1; // deep copy
+        dog2 = dog1;
         dog1.setBrainIdea(0, "Eat cheese");
         dog2.displayBrainIdea(0);
         dog2.setBrainIdea(0, "Sleep on the couch");

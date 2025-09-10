@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:26:29 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 18:39:45 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/09 18:35:49 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,4 @@ Dog& Dog::operator=(const Dog& other)
 void Dog::makeSound() const
 {
     std::cout << "Woof Woof!\n";
-}
-
-std::string Dog::getType() const
-{
-    return type;
-}
-
-void Dog::setType(std::string type)
-{
-    Animal::setType(type);
 }

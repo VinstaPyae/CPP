@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 17:27:02 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/08 17:27:04 by pzaw             ###   ########.fr       */
+/*   Updated: 2025/09/09 18:36:40 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ class WrongDog : public WrongAnimal
     WrongDog(const WrongDog& other);
     //operator assign
     WrongDog& operator=(const WrongDog& other);
-    //get set
-    std::string getType() const;
-    void setType(std::string type);
     //members
     void makeSound()const;
 };

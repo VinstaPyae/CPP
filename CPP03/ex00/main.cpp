@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/05 15:45:21 by pzaw              #+#    #+#             */
+/*   Updated: 2025/09/05 15:45:22 by pzaw             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 int main() {
@@ -10,23 +22,23 @@ int main() {
     alpha.attack("Beta");
 
     std::cout << "\n--- Beta takes damage ---\n";
-    beta.takeDamage(4);   // HP: 6 left
-    beta.takeDamage(6);   // HP: 0 left (dead)
+    beta.takeDamage(4);
+    beta.takeDamage(6);
 
     std::cout << "\n--- Beta tries to attack (should fail) ---\n";
     beta.attack("Alpha");
 
     std::cout << "\n--- Alpha takes damage and repairs ---\n";
-    alpha.takeDamage(5);  // HP: 5 left
-    alpha.beRepaired(3);  // HP: 8 left
-    alpha.beRepaired(5);  // HP: 10 (max or more)
+    alpha.takeDamage(5);
+    alpha.beRepaired(3);
+    alpha.beRepaired(5);
 
     std::cout << "\n--- Alpha repairs until no energy ---\n";
     alpha.beRepaired(1);
     alpha.beRepaired(1);
     alpha.beRepaired(1);
     alpha.beRepaired(1);
-    alpha.beRepaired(1); // should now be out of energy
+    alpha.beRepaired(1);
 
     std::cout << "\n--- Alpha tries to attack with no energy (should fail) ---\n";
     alpha.attack("Beta");

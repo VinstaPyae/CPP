@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 17:26:24 by pzaw              #+#    #+#             */
-/*   Updated: 2025/09/09 19:02:24 by pzaw             ###   ########.fr       */
+/*   Created: 2025/09/08 17:26:17 by pzaw              #+#    #+#             */
+/*   Updated: 2025/09/09 18:17:57 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
+#include <string>
 
-class Cat : public Animal
+class Animal
 {
-    private:
-        Brain* brain;
+    protected:
+        std::string type;
     public:
-    //con & de    
-        Cat();
-        ~Cat();
-    //copy con
-        Cat(const Cat& other);
+    //construct & decostruct
+        Animal();
+        virtual ~Animal();
+    //copy construct
+        Animal(const Animal& other);
     //assign operator
-        Cat& operator=(const Cat& other);
-    //override member
-        virtual void makeSound() const;
+        Animal& operator=(const Animal& other);
+    //getter setter
+        std::string getType() const;
+        void setType(std::string type);
     //members
-        void setBrainIdea(int index, const std::string &idea);
-        void displayBrainIdea(int index) const;
+        virtual void makeSound() const = 0;
 };
 
 #endif

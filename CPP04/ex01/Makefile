@@ -6,11 +6,11 @@
 #    By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 17:26:40 by pzaw              #+#    #+#              #
-#    Updated: 2025/09/08 19:25:38 by pzaw             ###   ########.fr        #
+#    Updated: 2025/09/09 19:07:16 by pzaw             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    := Animal
+NAME    := AnimalBrain
 CXX     := c++
 CXXFLAGS:= -Wall -Wextra -Werror -std=c++98
 SRCS    := main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
