@@ -18,7 +18,7 @@ class ShrubberyCreationForm : public AForm
         //getter
         const std::string& getTarget() const;
         // Overridden function
-        void execute(const Bureaucrat& executor) const override;
+        void execute(const Bureaucrat& executor) const;
 };
 
 #endif

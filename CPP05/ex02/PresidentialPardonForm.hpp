@@ -20,7 +20,7 @@ public:
     ~PresidentialPardonForm();
 
     // Execute function
-    void execute(Bureaucrat const &executor) const override;
+    void execute(Bureaucrat const &executor) const;
 };
 
 #endif
