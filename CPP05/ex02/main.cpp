@@ -34,6 +34,7 @@ int main()
 
         mid.signForm(pardon); // should fail
         high.signForm(pardon);
+	mid.executeForm(pardon);
         high.executeForm(pardon);
     }
     catch (std::exception &e)
