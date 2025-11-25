@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
+#include <sstream>
 #include <cerrno>
 #include <cctype>
 #include <limits>

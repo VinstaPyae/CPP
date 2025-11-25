@@ -113,6 +113,53 @@ static LiteralType detectType(const std::string& input)
 	return TYPE_INVALID;
 }
 
+static char parseChar(const std::string& input)
+{
+	return input[0];
+}
+
+static std::pair<bool, int> parseInt(const std::string& input)
+{
+	long long	tmp;
+	std::istringstream iss(input);
+	iss >> tmp;
+	if (iss.fail())
+		return std::make_pair(false, 0);
+	if (tmp < INT_MIN || tmp > INT_MAX)
+		return std::make_pair(false, 0);
+	return std::make_pair(true, static_cast<int>(tmp));
+}
+
+static std::pair<bool, float> parseFloat(const std::string& input)
+{
+	std::string core = input.substr(0, input.length() - 1);
+	double tmp = parseDouble(core).second;
+	const double maxF = std::numeric_limits<float>::max();
+	const double minF = -maxF;
+	if (tmp > maxF || tmp < minF)
+		return std::make_pair(false, 0.0f);
+	return std::make_pair(true, static_cast<float>(tmp));
+}
+
+static std::pair<bool, double> parseDouble(const std::string& input)
+{
+	std::string str_d = input;
+	char* end = 0;
+	errno = 0;
+	double tmp = std::strtod(str_d.c_str(), &end);
+	if (end == str_d.c_str() || *end != '\0')
+		return std::make_pair(false, 0.0);
+	if (errno == ERANGE)
+		return std::make_pair(false, 0.0);
+	return std::make_pair(true, static_cast<double>(tmp));
+}
+
+static float parseSpFloat(const std::string& input)
+{
+	if (input == "nanf")
+		return std::
+}
+
 void ScalarConverter::convert(std::string& literal)
 {
 	LiteralType type = detectType(literal);
@@ -124,20 +171,73 @@ void ScalarConverter::convert(std::string& literal)
 		std::cout << "double: impossible" << std::endl;
 		return ;
 	}
-	if (type == TYPE_SP_FLOAT || type == TYPE_SP_DB)
+	if (type == TYPE_SP_FLOAT)
 	{
-		printSpecial(literal, type);
+		float sf = parseSpFloat(literal);
+		return ;
+	}
+	if (type == TYPE_SP_DB)
+	{
+		double sd = parseSpDouble(literal);
 		return ;
 	}
 	if (type == TYPE_CHAR)
 	{
 		char c = parseChar(literal);
-		printChar(c);
-		return c;
+		displayChar(c);
+		return ;
 	}
 	if (type == TYPE_INT)
 	{
-		
+		bool success = parseInt(literal).first;
+		int i = parseInt(literal).second;
+		if (success == false)
+		{
+			std::cout << "char : impossible" << std::endl;
+			std::cout << "int : impossible" << std::endl;
+			std::cout << "float : impossible" << std::endl;
+			std::cout << "double: impossible" << std::endl;
+			return ;
+		}
+		displayInt(i);
+		return ;
 	}
-	if (type )
+	if (type == TYPE_FLOAT)
+	{
+		bool sucess = parseFloat(literal).first;
+		float f = parseFloat(literal).second;
+		if (sucess == false)
+		{
+			std::cout << "char : impossible" << std::endl;
+			std::cout << "int : impossible" << std::endl;
+			std::cout << "float : impossible" << std::endl;
+			std::cout << "double: impossible" << std::endl;
+			return ;
+		}
+		displayFloat(f);
+		return ;
+	}
+	if (type == TYPE_DOUBLE)
+	{
+		bool sucess = parseDouble(literal).first;
+		double d = parseDouble(literal).second;
+		if (sucess == false)
+		{
+			std::cout << "char : impossible" << std::endl;
+			std::cout << "int : impossible" << std::endl;
+			std::cout << "float : impossible" << std::endl;
+			std::cout << "double: impossible" << std::endl;
+			return ;-
+		}
+		displayDouble(d);
+		return ;
+	}
+	if (type == TYPE_INVALID)
+	{
+		std::cout << "char : impossible" << std::endl;
+		std::cout << "int : impossible" << std::endl;
+		std::cout << "float : impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+		return ;
+	}
 }
