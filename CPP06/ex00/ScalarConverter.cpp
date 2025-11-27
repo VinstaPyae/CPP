@@ -5,8 +5,6 @@ static bool isValidChar(const std::string &input)
 	if (input.length() != 1)
 		return false;
 	unsigned char c = static_cast<unsigned char>(input[0]);
-	if (!std::isprint(c))
-		return false;
 	if (std::isdigit(c))
 		return false;
 	return true;
@@ -113,11 +111,6 @@ static LiteralType detectType(const std::string& input)
 	return TYPE_INVALID;
 }
 
-static char parseChar(const std::string& input)
-{
-	return input[0];
-}
-
 static std::pair<bool, int> parseInt(const std::string& input)
 {
 	long long	tmp;
@@ -156,22 +149,69 @@ static std::pair<bool, double> parseDouble(const std::string& input)
 	return std::make_pair(true, static_cast<double>(tmp));
 }
 
-static float parseSpFloat(const std::string& s)
+static void displaySpecials(LiteralType type,const std::string input)
 {
-    if (s == "nanf")  return std::numeric_limits<float>::quiet_NaN();
-    if (s == "+inff") return  std::numeric_limits<float>::infinity();
-    if (s == "-inff") return -std::numeric_limits<float>::infinity();
-    return std::numeric_limits<float>::quiet_NaN();
+	std::cout << "char : impossible" << std::endl;
+	std::cout << "int : impossible" << std::endl;
+	if (type == TYPE_FLOAT)
+	{
+		std::cout << "float : " << input << std::endl;
+		std::cout << "double : " << input.substr(0, input.length() - 1) << std::endl;
+	}
+	else
+	{
+		std::cout << "float : " << input << 'f' << std::endl;
+		std::cout << "double : " << input << std::endl;
+	}
 }
 
-static double parseSpDouble(const std::string& s)
+static void displayChar(const std::string input)
 {
-    if (s == "nan")  return std::numeric_limits<double>::quiet_NaN();
-    if (s == "+inf") return  std::numeric_limits<double>::infinity();
-    if (s == "-inf") return -std::numeric_limits<double>::infinity();
-    return std::numeric_limits<double>::quiet_NaN();
+	unsigned char c = input[0];
+	if (std::isprint(c))
+		std::cout << "char : " << c << std::endl;
+	else
+		std::cout << "char : Non displayable" << std::endl;
+	int i = static_cast<int>(c);
+	std::cout << "int : " << i << std::endl;
+	float f = static_cast<float>(c);
+	std::cout << "float : " << f << '.0f' << std::endl;
+	double d = static_cast<double>(c);
+	std::cout << "double : " << d << '.0' << std::endl;
 }
 
+static void handlePrintChar(int input)
+{
+	if (input < CHAR_MIN || input > CHAR_MAX)
+		std::cout << "char : impossible" << std::endl;
+	else
+	{
+		char c = static_cast<char>(input);
+		if (std::isprint(c))
+			std::cout << "char : " << c << std::endl;
+		else
+			std::cout << "char : " << "Non displayable" << std::endl;
+	}
+}
+
+static void displayInt(int input)
+{
+	handlePrintChar(input);
+	std::cout << "int : " << input << std::endl;
+	float f = static_cast<float>(input);
+	std::cout << "float : " << input << ".0f" << std::endl;
+	double d = static_cast<double>(input);
+	std::cout << "double : " << input << ".0" << std::endl;
+}
+
+static void displayDouble(double input)
+{
+	
+	handlePrintChar(n);
+	std::cout << "int : " << n << std::endl;
+	std::cout << "float : " << static_cast<float>(input) << ".0f" << std::endl;
+	std::cout << "double : " << static_cast<double>(input) << ".0" << std::endl;
+}
 
 void ScalarConverter::convert(std::string& literal)
 {
@@ -184,27 +224,19 @@ void ScalarConverter::convert(std::string& literal)
 		std::cout << "double: impossible" << std::endl;
 		return ;
 	}
-	else if (type == TYPE_SP_FLOAT)
+	else if (type == TYPE_SP_FLOAT || type == TYPE_SP_DB)
 	{
-		float sf = parseSpFloat(literal);
-		return ;
-	}
-	else if (type == TYPE_SP_DB)
-	{
-		double sd = parseSpDouble(literal);
-		return ;
+		displaySpecials(type, literal);
 	}
 	else if (type == TYPE_CHAR)
 	{
-		char c = parseChar(literal);
-		displayChar(c);
+		displayChar(literal);
 		return ;
 	}
 	else if (type == TYPE_INT)
 	{
-		bool success = parseInt(literal).first;
-		int i = parseInt(literal).second;
-		if (success == false)
+		std::pair<bool, int> i = parseInt(literal);
+		if ( i.first == false)
 		{
 			std::cout << "char : impossible" << std::endl;
 			std::cout << "int : impossible" << std::endl;
@@ -212,14 +244,13 @@ void ScalarConverter::convert(std::string& literal)
 			std::cout << "double: impossible" << std::endl;
 			return ;
 		}
-		displayInt(i);
+		displayInt(i.second);
 		return ;
 	}
 	else if (type == TYPE_FLOAT)
 	{
-		bool sucess = parseFloat(literal).first;
-		float f = parseFloat(literal).second;
-		if (sucess == false)
+		std::pair<bool, float> f = parseFloat(literal);
+		if (f.first == false)
 		{
 			std::cout << "char : impossible" << std::endl;
 			std::cout << "int : impossible" << std::endl;
@@ -227,14 +258,13 @@ void ScalarConverter::convert(std::string& literal)
 			std::cout << "double: impossible" << std::endl;
 			return ;
 		}
-		displayFloat(f);
+		displayFloat(f.second);
 		return ;
 	}
 	else if (type == TYPE_DOUBLE)
 	{
-		bool sucess = parseDouble(literal).first;
-		double d = parseDouble(literal).second;
-		if (sucess == false)
+		std::pair<bool, double> d = parseDouble(literal);
+		if (d.first == false)
 		{
 			std::cout << "char : impossible" << std::endl;
 			std::cout << "int : impossible" << std::endl;
@@ -242,7 +272,7 @@ void ScalarConverter::convert(std::string& literal)
 			std::cout << "double: impossible" << std::endl;
 			return ;-
 		}
-		displayDouble(d);
+		displayDouble(d.second);
 		return ;
 	}
 }
