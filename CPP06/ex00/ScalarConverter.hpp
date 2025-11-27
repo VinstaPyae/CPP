@@ -10,6 +10,9 @@
 #include <limits>
 #include <climits>
 #include <cfloat>
+#include <iomanip>
+#include <utility>
+
 
 enum LiteralType
 {
@@ -30,7 +33,7 @@ class ScalarConverter
 		ScalarConverter& operator=(const ScalarConverter& other);
 		~ScalarConverter();
 	public:
-		static void convert(std::string &literal);	
+		static void convert(const std::string &literal);	
 };
 
 #endif
