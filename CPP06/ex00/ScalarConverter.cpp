@@ -153,7 +153,7 @@ static void displaySpecials(LiteralType type,const std::string input)
 {
 	std::cout << "char : impossible" << std::endl;
 	std::cout << "int : impossible" << std::endl;
-	if (type == TYPE_FLOAT)
+	if (type == TYPE_SP_FLOAT)
 	{
 		std::cout << "float : " << input << std::endl;
 		std::cout << "double : " << input.substr(0, input.length() - 1) << std::endl;
@@ -206,10 +206,25 @@ static void displayInt(int input)
 
 static void displayDouble(double input)
 {
-	
-	handlePrintChar(n);
-	std::cout << "int : " << n << std::endl;
-	std::cout << "float : " << static_cast<float>(input) << ".0f" << std::endl;
+	if (input < static_cast<double>(INT_MIN) || input > static_cast<double>(INT_MAX))
+	{
+		std::cout << "char : impossible" << std::endl;
+		std::cout << "int : impossible" << std::endl;
+	}
+	else
+	{
+		int n = static_cast<int>(input);
+		handlePrintChar(n);
+		std::cout << "int : " << n << std::endl;
+	}
+	const double maxF = std::numeric_limits<float>::max();
+    const double minF = -maxF;
+    if (input < minF || input > maxF)
+    {
+        std::cout << "float : impossible" << std::endl;
+    }
+    else
+		std::cout << "float : " << static_cast<float>(input) << ".0f" << std::endl;
 	std::cout << "double : " << static_cast<double>(input) << ".0" << std::endl;
 }
 
@@ -270,7 +285,7 @@ void ScalarConverter::convert(std::string& literal)
 			std::cout << "int : impossible" << std::endl;
 			std::cout << "float : impossible" << std::endl;
 			std::cout << "double: impossible" << std::endl;
-			return ;-
+			return ;
 		}
 		displayDouble(d.second);
 		return ;
