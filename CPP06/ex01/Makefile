@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/11/28 12:14:44 by pzaw              #+#    #+#              #
-#    Updated: 2025/11/28 12:14:45 by pzaw             ###   ########.fr        #
+#    Created: 2025/11/28 12:15:11 by pzaw              #+#    #+#              #
+#    Updated: 2025/11/28 13:16:44 by pzaw             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    := convert
+NAME    := serialize
 CXX     := c++
 CXXFLAGS:= -Wall -Wextra -Werror -std=c++98
-SRCS    := main.cpp ScalarConverter.cpp
+SRCS    := main.cpp Serialization.cpp
 OBJS    := $(SRCS:.cpp=.o)
 
 all: $(NAME)
