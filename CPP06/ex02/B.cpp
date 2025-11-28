@@ -1,36 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   B.cpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/28 18:59:27 by pzaw              #+#    #+#             */
-/*   Updated: 2025/11/28 18:59:28 by pzaw             ###   ########.fr       */
+/*   Created: 2025/11/28 18:59:36 by pzaw              #+#    #+#             */
+/*   Updated: 2025/11/28 18:59:37 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-#define BASE_HPP
+#include "B.hpp"
 
-#include "iostream"
-#include "string"
-#include <cstdlib>
-#include <ctime>
-#include <typeinfo>
+B::B(){}
 
-class Base
-{
-    private:
-        Base(const Base& other);
-        Base& operator=(const Base& other);
-    public:
-        Base();
-        virtual ~Base();
-        //member
-        Base* generate();
-        void identify(Base* p);
-        void identify(Base& p);
-};
-
-#endif
+B::~B(){}

@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/28 18:59:30 by pzaw              #+#    #+#             */
+/*   Updated: 2025/11/28 18:59:31 by pzaw             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
 
 Base::Base(){}
+
+Base::~Base(){}
 
 Base* Base::generate()
 {
@@ -20,4 +34,39 @@ Base* Base::generate()
         return new B();
     else
         return new C();
+}
+
+void Base::identify(Base* p)
+{
+    if (dynamic_cast<A*>(p))
+        std::cout << "p: \"A\"\n";
+    else if (dynamic_cast<B*>(p))
+        std::cout << "p: \"B\"\n";
+    else if (dynamic_cast<C*>(p))
+        std::cout << "p: \"C\"\n";
+}
+
+void Base::identify(Base& p)
+{
+    try
+    {
+        (void)dynamic_cast<A&>(p);
+        std::cout << "p: \"A\"\n";
+        return ;
+    }
+    catch(...) {}
+    try
+    {
+        (void)dynamic_cast<B&>(p);
+        std::cout << "p: \"B\"\n";
+        return ;
+    }
+    catch(...) {}
+    try
+    {
+        (void)dynamic_cast<C&>(p);
+        std::cout << "p: \"C\"\n";
+        return ;
+    }
+    catch(...) {}
 }
