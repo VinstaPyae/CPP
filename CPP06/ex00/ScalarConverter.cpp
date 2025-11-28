@@ -111,16 +111,14 @@ static LiteralType detectType(const std::string& input)
 	return TYPE_INVALID;
 }
 
-static std::pair<bool, int> parseInt(const std::string& input)
+static std::pair<bool, long long> parseInt(const std::string& input)
 {
 	long long	tmp;
 	std::istringstream iss(input);
 	iss >> tmp;
 	if (iss.fail())
 		return std::make_pair(false, 0);
-	if (tmp < INT_MIN || tmp > INT_MAX)
-		return std::make_pair(false, 0);
-	return std::make_pair(true, static_cast<int>(tmp));
+	return std::make_pair(true,tmp);
 }
 
 static std::pair<bool, double> parseDouble(const std::string& input)
@@ -136,17 +134,15 @@ static std::pair<bool, double> parseDouble(const std::string& input)
 	return std::make_pair(true, static_cast<double>(tmp));
 }
 
-static std::pair<bool, float> parseFloat(const std::string& input)
+static std::pair<bool, double> parseFloat(const std::string& input)
 {
 	std::string core = input.substr(0, input.length() - 1);
 	if (!parseDouble(core).first)
-		return std::make_pair(false, 0.0f);
-	double tmp = parseDouble(core).second;
-	const double maxF = std::numeric_limits<float>::max();
-	const double minF = -maxF;
-	if (tmp > maxF || tmp < minF)
-		return std::make_pair(false, 0.0f);
-	return std::make_pair(true, static_cast<float>(tmp));
+		return std::make_pair(false, 0.0);
+	std::pair<bool, double> tmp = parseDouble(core);
+	if (!tmp.first)
+		return std::make_pair(false, 0.0);
+	return std::make_pair(true, tmp.second);
 }
 
 static void printFloatLiteral(float value)
@@ -190,7 +186,7 @@ static void displayChar(const std::string input)
 	printDoubleLiteral(d);
 }
 
-static void handlePrintChar(int input)
+static void handlePrintChar(long long input)
 {
 	if (input < CHAR_MIN || input > CHAR_MAX)
 		std::cout << "char: impossible" << std::endl;
@@ -204,19 +200,22 @@ static void handlePrintChar(int input)
 	}
 }
 
-static void displayInt(int input)
+static void displayInt(long long input)
 {
 	handlePrintChar(input);
-	std::cout << "int: " << input << std::endl;
+	if (input < INT_MIN || input > INT_MAX)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(input) << std::endl;
 	float f = static_cast<float>(input);
 	printFloatLiteral(f);
 	double d = static_cast<double>(input);
 	printDoubleLiteral(d);
 }
 
-static void displayFloat(float input)
+static void displayFloat(double input)
 {
-	if (input < static_cast<float>(INT_MIN) || input > static_cast<float>(INT_MAX))
+	if (input < static_cast<double>(INT_MIN) || input > static_cast<double>(INT_MAX))
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -227,9 +226,11 @@ static void displayFloat(float input)
 		handlePrintChar(n);
 		std::cout << "int: " << n << std::endl;
 	}
-	printFloatLiteral(input);
-	double d = static_cast<double>(input);
-	printDoubleLiteral(d);
+	if (input < -std::numeric_limits<float>::max() || input > std::numeric_limits<float>::max())
+		std::cout << "float: impossible" << std::endl;
+	else
+		printFloatLiteral(static_cast<float>(input));
+	printDoubleLiteral(input);
 }
 
 static void displayDouble(double input)
@@ -245,15 +246,11 @@ static void displayDouble(double input)
 		handlePrintChar(n);
 		std::cout << "int: " << n << std::endl;
 	}
-	const double maxF = std::numeric_limits<float>::max();
-	const double minF = -maxF;
-	if (input < minF || input > maxF)
-	{
+	if (input < -std::numeric_limits<float>::max() || input > std::numeric_limits<float>::max())
 		std::cout << "float: impossible" << std::endl;
-	}
 	else
 		printFloatLiteral(static_cast<float>(input));
-	printDoubleLiteral(static_cast<double>(input));
+	printDoubleLiteral(input);
 }
 
 void ScalarConverter::convert(const std::string& literal)
@@ -278,7 +275,7 @@ void ScalarConverter::convert(const std::string& literal)
 	}
 	else if (type == TYPE_INT)
 	{
-		std::pair<bool, int> i = parseInt(literal);
+		std::pair<bool, long long> i = parseInt(literal);
 		if ( i.first == false)
 		{
 			std::cout << "char: impossible" << std::endl;
@@ -292,7 +289,7 @@ void ScalarConverter::convert(const std::string& literal)
 	}
 	else if (type == TYPE_FLOAT)
 	{
-		std::pair<bool, float> f = parseFloat(literal);
+		std::pair<bool, double> f = parseFloat(literal);
 		if (f.first == false)
 		{
 			std::cout << "char: impossible" << std::endl;
