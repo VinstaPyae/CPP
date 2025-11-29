@@ -1,6 +1,6 @@
 #include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
 #include <stdexcept>
-#include <iostream>
 
 // Default constructor
 PresidentialPardonForm::PresidentialPardonForm()
@@ -27,7 +27,10 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &oth
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
 {
     if (this != &other)
+    {
+        AForm::operator=(other);
         _target = other._target;
+    }
     std::cout << _target << " assigned PresidentialPardonForm\n";
     return *this;
 }
@@ -38,11 +41,17 @@ PresidentialPardonForm::~PresidentialPardonForm()
     std::cout << _target << " destroy PresidentialPardonForm\n";
 }
 
+// Getter
+const std::string &PresidentialPardonForm::getTarget() const
+{
+    return _target;
+}
+
 // Execute
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
     if (!getIsSigned())
-        throw std::runtime_error("Form not signed!");
+        throw FormNotSign();
     if (executor.getGrade() > getGradeToExecute())
         throw GradeTooLowException();
 

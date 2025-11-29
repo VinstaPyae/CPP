@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 class Bureaucrat;
 
@@ -33,6 +36,11 @@ class AForm
                 virtual const char *what() const throw();
         };
         class GradeTooLowException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+        class FormNotSign : public std::exception
         {
             public:
                 virtual const char *what() const throw();

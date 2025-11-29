@@ -12,7 +12,7 @@ int main()
 
         // Valid forms
         AForm* shrub;
-	shrub = intern.makeForm("shrubbery creation", "home");
+	    shrub = intern.makeForm("shrubbery creation", "home");
         AForm* robo = intern.makeForm("robotomy request", "Bender");
         AForm* pardon = intern.makeForm("presidential pardon", "Ford Prefect");
 

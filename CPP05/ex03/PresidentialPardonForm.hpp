@@ -2,9 +2,6 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
-#include "Bureaucrat.hpp"
-#include <iostream>
-#include <string>
 
 class PresidentialPardonForm : public AForm
 {
@@ -19,6 +16,9 @@ public:
     PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
     ~PresidentialPardonForm();
 
+    // Getter
+    const std::string &getTarget() const;
+    
     // Execute function
     void execute(Bureaucrat const &executor) const;
 };

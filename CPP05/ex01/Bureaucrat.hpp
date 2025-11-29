@@ -1,5 +1,5 @@
-#ifndef BUREACURAT_HPP
-# define BUREACURAT_HPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string>

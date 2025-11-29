@@ -58,12 +58,17 @@ int AForm::getGradeToExecute() const
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-    return "AForm Grade is too high!\n";
+    return "AForm Grade is too high!";
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-    return "AForm Grade is too low!\n";
+    return "AForm Grade is too low!";
+}
+
+const char* AForm::FormNotSign::what() const throw()
+{
+    return "AForm is not sign!";
 }
 
 void AForm::beSigned(const Bureaucrat &bureaucrat)
