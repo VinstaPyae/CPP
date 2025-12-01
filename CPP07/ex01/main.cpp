@@ -1,13 +1,11 @@
 #include "iter.hpp"
 
-// Example function to print an element (const reference)
 template <typename T>
 void print(T const &x)
 {
     std::cout << x << " ";
 }
 
-// Example function to double an element (modifiable)
 void doubleValue(int &x)
 {
     x *= 2;
