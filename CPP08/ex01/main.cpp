@@ -24,13 +24,24 @@ int main()
 	{
 		std::cout << "Error: " << e.what() << std::endl;
 	}
-
+	std::cout << "\n===== SIZE TEST =====" << std::endl;
+	try
+	{
+		Span sp(2);
+		sp.addNumber(1);
+		sp.addNumber(2);
+		sp.addNumber(3);
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "Expected error: " << e.what() << std::endl;
+	}
 	std::cout << "\n===== EXCEPTION TEST =====" << std::endl;
 	try
 	{
 		Span sp(1);
 		sp.addNumber(42);
-		sp.shortestSpan(); // should throw
+		sp.shortestSpan();
 	}
 	catch (const std::exception& e)
 	{
@@ -58,15 +69,15 @@ int main()
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	std::cout << "\n===== LARGE DATA TEST (10,000+) =====" << std::endl;
+	std::cout << "\n===== LARGE DATA TEST (100,000+) =====" << std::endl;
 	try
 	{
-		const unsigned int SIZE = 10000;
+		const unsigned int SIZE = 100000;
 		Span sp(SIZE);
 
 		std::srand(std::time(NULL));
 		for (unsigned int i = 0; i < SIZE; ++i)
-			sp.addNumber(std::rand());
+			sp.addNumber(i);
 
 		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest span : " << sp.longestSpan() << std::endl;

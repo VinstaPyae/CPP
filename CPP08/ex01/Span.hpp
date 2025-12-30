@@ -24,10 +24,8 @@ class Span
         void addNumber(Iterator begin, Iterator end)
         {
             size_t distance = std::distance(begin, end);
-
             if (_numbers.size() + distance > _size)
                 throw FullException();
-
             _numbers.insert(_numbers.end(), begin, end);
         }
 
