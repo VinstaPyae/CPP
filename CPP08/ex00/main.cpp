@@ -5,7 +5,6 @@
 
 int main()
 {
-	// ---------- Test with std::vector ----------
 	std::vector<int> vec;
 	vec.push_back(1);
 	vec.push_back(3);
@@ -30,8 +29,6 @@ int main()
 	{
 		std::cout << "Vector error: " << e.what() << std::endl;
 	}
-
-	// ---------- Test with std::list ----------
 	std::list<int> lst;
 	lst.push_back(10);
 	lst.push_back(20);
